@@ -1,33 +1,51 @@
 import React from "react";
+import {ChakraProvider, Box} from '@chakra-ui/react'
+import {ChevronRightIcon} from '@chakra-ui/icons'
+import { Link, useLocation } from 'react-router-dom';
+
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+} from '@chakra-ui/react'
+
+const headerStyle = {
+  color: '#4FD1C5',
+  fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+  fontWeight: 'bold',
+  fontSize: '24px',
+  textAlign: 'center'
+};
+
+const breadcrumbs = [
+  { label: 'Home', path: '/' },
+  { label: 'Exercises', path: '/exercises' },
+  { label: 'Nutrition', path: '/nutrition' },
+];
+
+
 
 function Navbar() {
-    return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-            <div className="container-fluid">
-                <a className="navbar-brand" href="#">Navbar</a>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Link</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link disabled" aria-disabled="true">Disabled</a>
-                        </li>
-                    </ul>
-                    <form className="d-flex" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-    );
+  const location = useLocation();
+  return (
+    <ChakraProvider>
+      <Breadcrumb separator={<ChevronRightIcon></ChevronRightIcon>}>
+        {breadcrumbs.map((item, index) => (
+          <BreadcrumbItem key={index}>
+            {location.pathname === item.path ? (
+              <span>{item.label}</span>
+            ) : (
+              <Link to={item.path}>
+                {item.label}
+              </Link>
+            )}
+            {index < breadcrumbs.length - 1}
+          </BreadcrumbItem>
+        ))}
+      </Breadcrumb>
+    </ChakraProvider>
+  );
 }
 
 export default Navbar;
