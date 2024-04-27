@@ -1,7 +1,7 @@
 import React from "react";
 import {ChakraProvider, Box, Text, Flex, Spacer, Heading} from '@chakra-ui/react'
 import NavBar from "./NavBar";
-import ExTable from "Table.js"
+import ExTable from "./ExTable.js"
 
 const pageStyle = {
     color: '##4fd1af',

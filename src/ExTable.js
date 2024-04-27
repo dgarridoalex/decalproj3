@@ -1,6 +1,18 @@
 import React from "react";
 import {ChakraProvider, Box, Text, Flex, Spacer, Heading, Table, Thead, Tbody, Tfoot ,Tr, Th, Td, TableCaption, TableContainer} from '@chakra-ui/react'
 
+
+const pageStyle = {
+  color: '##4fd1af',
+  fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+  fontWeight: 'bold',
+  fontSize: '32px',
+  textAlign: 'center',
+  backgroundColor: '#121212',
+  minHeight: '100vh'
+};
+
+
 function ExTable() {
     return (
   <ChakraProvider>
