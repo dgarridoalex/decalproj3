@@ -12,11 +12,16 @@ const pageStyle = {
   minHeight: '100vh'
 };
 
+const boxStyle = {
+  width: '80%', // Adjust the width as per your requirement
+  margin: 'auto', // Center the box horizontally
+  marginTop: '20px', // Add some top margin
+};
 
 function ExTable() {
     return (
   <ChakraProvider>
-    <Box sx={pageStyle}>
+    <Box sx={pageStyle} style={boxStyle}>
     <TableContainer>
   <Table variant='simple'>
     <TableCaption>My Exercises</TableCaption>
