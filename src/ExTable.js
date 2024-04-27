@@ -1,20 +1,7 @@
 import React from "react";
-import {ChakraProvider, Box, Text, Flex, Spacer, Heading} from '@chakra-ui/react'
-import NavBar from "./NavBar";
+import {ChakraProvider, Box, Text, Flex, Spacer, Heading, Table, Thead, Tbody, Tfoot ,Tr, Th, Td, TableCaption, TableContainer} from '@chakra-ui/react'
 
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-  TableContainer,
-} from '@chakra-ui/react'
-
-function Table() {
+function ExTable() {
     return (
   <ChakraProvider>
     <Box sx={pageStyle}>
@@ -60,5 +47,4 @@ function Table() {
   }
 
 
-
-export default Table;
+export default ExTable;
