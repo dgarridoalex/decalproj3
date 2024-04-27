@@ -3,7 +3,6 @@ import {ChakraProvider, Box, Text, Flex, Spacer, Heading} from '@chakra-ui/react
 import NavBar from "./NavBar";
 import ExTable from "Table.js"
 
-
 const pageStyle = {
     color: '##4fd1af',
     fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
