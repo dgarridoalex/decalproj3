@@ -11,6 +11,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.3",
+    "express": "^4.19.2",
     "framer-motion": "^11.1.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -41,5 +42,20 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "daniel g and evan w project",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgarridoalex/decalproj3.git"
+  },
+  "keywords": [
+    "finaldecalproj"
+  ],
+  "author": "daniel g and evan w",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dgarridoalex/decalproj3/issues"
+  },
+  "homepage": "https://github.com/dgarridoalex/decalproj3#readme"
 }
