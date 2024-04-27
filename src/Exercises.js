@@ -1,7 +1,6 @@
 import React from "react";
 import {ChakraProvider, Box, Text, Flex, Spacer, Heading} from '@chakra-ui/react'
 import NavBar from "./NavBar";
-import Table from "Table.js"
 
 import {
   Table,
