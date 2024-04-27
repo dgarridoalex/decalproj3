@@ -42,28 +42,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-<<<<<<< HEAD
-  "description": "daniel g and evan w project",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dgarridoalex/decalproj3.git"
-  },
-  "keywords": [
-    "finaldecalproj"
-  ],
-  "author": "daniel g and evan w",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dgarridoalex/decalproj3/issues"
-  },
-  "homepage": "https://github.com/dgarridoalex/decalproj3#readme"
-=======
-  "description": "",
-  "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
->>>>>>> 8bc6b09ac5e270240b4310a5747d2e4645aa9e77
+  }
 }
