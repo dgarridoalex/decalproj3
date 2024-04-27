@@ -18,42 +18,46 @@ const boxStyle = {
   marginTop: '20px', // Add some top margin
 };
 
+const tableTextStyle = {
+  color: 'white', // Change the color to white or any other color you prefer
+};
+
 function ExTable() {
     return (
   <ChakraProvider>
     <Box sx={pageStyle} style={boxStyle}>
     <TableContainer>
-  <Table variant='simple'>
+  <Table variant='simple' colorScheme="white">
     <TableCaption>My Exercises</TableCaption>
     <Thead>
       <Tr>
-        <Th>Exercise</Th>
-        <Th>Sets</Th>
-        <Th isNumeric>Weight</Th>
+        <Th style={tableTextStyle}>Exercise</Th>
+        <Th style={tableTextStyle}>Sets</Th>
+        <Th style={tableTextStyle} isNumeric>Weight</Th>
       </Tr>
     </Thead>
     <Tbody>
       <Tr>
-        <Td>bicep curl</Td>
-        <Td>2</Td>
-        <Td isNumeric>20</Td>
+        <Td style={tableTextStyle}>bicep curl</Td>
+        <Td style={tableTextStyle}>2</Td>
+        <Td style={tableTextStyle} isNumeric>20</Td>
       </Tr>
       <Tr>
-        <Td>feet</Td>
-        <Td>3 (cm)</Td>
-        <Td isNumeric>30.48</Td>
+        <Td style={tableTextStyle}>feet</Td>
+        <Td style={tableTextStyle}>centimetres (cm)</Td>
+        <Td style={tableTextStyle} isNumeric>30.48</Td>
       </Tr>
       <Tr>
-        <Td>yards</Td>
-        <Td>4 (m)</Td>
-        <Td isNumeric>0.91444</Td>
+        <Td style={tableTextStyle}>yards</Td>
+        <Td style={tableTextStyle}>metres (m)</Td>
+        <Td style={tableTextStyle} isNumeric>0.91444</Td>
       </Tr>
     </Tbody>
     <Tfoot>
       <Tr>
-        <Th>To convert</Th>
-        <Th>into</Th>
-        <Th isNumeric>multiply by</Th>
+        <Th style={tableTextStyle}>To convert</Th>
+        <Th style={tableTextStyle}>into</Th>
+        <Th style={tableTextStyle} isNumeric>multiply by</Th>
       </Tr>
     </Tfoot>
   </Table>
