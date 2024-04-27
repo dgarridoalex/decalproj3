@@ -26,9 +26,9 @@ function ExTable() {
     return (
   <ChakraProvider>
     <Box sx={pageStyle} style={boxStyle}>
+    <Heading as="h1" size="xl" mb={6} style={{ color: 'white' }}>My Exercises</Heading>
     <TableContainer>
   <Table variant='simple' colorScheme="white">
-    <TableCaption>My Exercises</TableCaption>
     <Thead>
       <Tr>
         <Th style={tableTextStyle}>Exercise</Th>
