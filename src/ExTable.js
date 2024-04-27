@@ -40,12 +40,12 @@ function ExTable() {
       </Tr>
       <Tr>
         <Td>feet</Td>
-        <Td>centimetres (cm)</Td>
+        <Td>3 (cm)</Td>
         <Td isNumeric>30.48</Td>
       </Tr>
       <Tr>
         <Td>yards</Td>
-        <Td>metres (m)</Td>
+        <Td>4 (m)</Td>
         <Td isNumeric>0.91444</Td>
       </Tr>
     </Tbody>
