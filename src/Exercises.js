@@ -30,14 +30,14 @@ const pageStyle = {
     const [isLoading, setIsLoading] = useState(false); // Track loading state for user feedback
     const [error, setError] = useState(null); // Store any errors during data fetching or submission
   
-    // Fetch workout data on component mount (optional, if needed from backend)
+    // Fetch workout data on component mount
     useEffect(() => {
       const fetchData = async () => {
         setIsLoading(true); // Set loading state to true
         setError(null); // Clear any previous errors
   
         try {
-          const response = await fetch('http://localhost:5000/workouts'); // Assuming backend on port 5000
+          const response = await fetch('http://localhost:3000/workouts'); // Assuming backend on port 5000
           if (!response.ok) {
             throw new Error(`Error fetching workouts: ${response.statusText}`);
           }
@@ -51,7 +51,7 @@ const pageStyle = {
         }
       };
       fetchData();
-    }, []);
+    }, []); // Empty dependency array ensures fetching only once on mount
   
     // Function to handle new exercise submission
     const handleAddExercise = async () => {
@@ -65,7 +65,7 @@ const pageStyle = {
       setError(null); // Clear any previous errors
   
       try {
-        const response = await fetch('http://localhost:5000/workouts', {
+        const response = await fetch('http://localhost:3000/workouts', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newWorkout),
