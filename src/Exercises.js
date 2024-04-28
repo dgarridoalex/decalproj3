@@ -37,12 +37,12 @@ const pageStyle = {
         setError(null); // Clear any previous errors
   
         try {
-          const response = await fetch('http://localhost:3000/exercises'); // Assuming backend on port 5000
+          const response = await fetch('http://localhost:3000/exercises');
           if (!response.ok) {
             throw new Error(`Error fetching workouts: ${response.statusText}`);
           }
           const data = await response.json();
-          setWorkouts(data);
+          setWorkouts(data); // Set the workouts state with the fetched data
         } catch (error) {
           console.error('Error fetching workouts:', error);
           setError(error.message); // Set error message for display
@@ -58,9 +58,6 @@ const pageStyle = {
       if (!newExercise) return; // Prevent empty submissions
   
       const newWorkout = { exercise: newExercise }; // Create new workout object
-      setWorkouts([...workouts, newWorkout]); // Add to workouts state (for immediate UI update)
-      setNewExercise(''); // Clear input field
-  
       setIsLoading(true); // Set loading state to true
       setError(null); // Clear any previous errors
   
@@ -76,6 +73,8 @@ const pageStyle = {
         }
         const data = await response.json(); // Expect success message or additional data
         console.log('Exercise added successfully:', data); // Log success message for debugging
+        setWorkouts([...workouts, newWorkout]); // Add the new workout to the workouts state
+        setNewExercise(''); // Clear input field
       } catch (error) {
         console.error('Error adding exercise:', error);
         setError(error.message); // Set error message for display
@@ -131,4 +130,3 @@ const pageStyle = {
   }
   
   export default Exercises;
-  

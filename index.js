@@ -5,7 +5,10 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const app = express();
 const cors = require('cors');
 
-app.use(cors()); // Add CORS middleware
+app.use(cors({
+  origin: 'http://localhost:3001', // Specify allowed origin
+  credentials: true // Allow requests with credentials
+}));
 app.use(express.json());
 
 const uri = "mongodb+srv://daniel:TMlG1WTbK0g9WSaP@cluster0.xr7hpln.mongodb.net/?retryWrites=true&w=majority";
@@ -36,7 +39,7 @@ const Workout = mongoose.model('Workout', workoutSchema);
 app.post('/exercises', async (req, res) => {
   const newWorkout = new Workout(req.body);
   try {
-    await newWorkout.save();
+    await newWorkout.save(); // Save the new workout to the database
     res.json({ message: 'Exercise added successfully!' });
   } catch (error) {
     console.error('Error adding exercise:', error);
