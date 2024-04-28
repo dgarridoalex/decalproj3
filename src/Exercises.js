@@ -37,7 +37,7 @@ const pageStyle = {
         setError(null); // Clear any previous errors
   
         try {
-          const response = await fetch('http://localhost:3000/workouts'); // Assuming backend on port 5000
+          const response = await fetch('http://localhost:3000/exercises'); // Assuming backend on port 5000
           if (!response.ok) {
             throw new Error(`Error fetching workouts: ${response.statusText}`);
           }
@@ -65,10 +65,11 @@ const pageStyle = {
       setError(null); // Clear any previous errors
   
       try {
-        const response = await fetch('http://localhost:3000/workouts', {
+        const response = await fetch('http://localhost:3000/exercises', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newWorkout),
+          credentials: 'include'
         });
         if (!response.ok) {
           throw new Error(`Error adding exercise: ${response.statusText}`);

@@ -61,19 +61,31 @@ app.listen(port,()=>{
 =======
 require("dotenv").config(); 
 const express = require('express');
-const app = express();
-app.listen(3000, () => console.log("Server is running"));
-app.use(express.json())
 const mongoose = require("mongoose");
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://dgarridoalex:<password>@cluster0.xr7hpln.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri, {
+const app = express();
+const cors = require('cors');
+
+app.use(cors()); // Add CORS middleware
+app.use(express.json());
+
+const uri = "mongodb+srv://daniel:TMlG1WTbK0g9WSaP@cluster0.xr7hpln.mongodb.net/?retryWrites=true&w=majority";
+
+mongoose.connect(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
   }
-});
+})
+  .then(() => {
+    console.log("MongoDB connection established");
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+  });
+
+app.listen(3000, () => console.log("Server is running"));
 
 
 const workoutSchema = new mongoose.Schema({
@@ -144,8 +156,15 @@ app.get('/exercises/:id', async (req, res) => {
   }
 });
 
+app.get('/', (req, res) => {
+  res.send('Welcome to your workout API!');
+});
 
+app.use((req, res) => {
+  res.status(404).send('404 Not Found');
+});
 
+<<<<<<< HEAD
 
 // // Replace with your database connection details (URI)
 // const uri = "mongodb://localhost:27017/your-fitness-tracker-db";
@@ -169,3 +188,10 @@ app.get('/exercises/:id', async (req, res) => {
 
 // app.listen(port, () => console.log(`Server listening on port ${port}`));
 >>>>>>> 2ba812f8f96aac5da8b4d53f323b8dfb31326bfd
+=======
+if (mongoose.connection.readyState !== 1) {
+  console.log("MongoDB connection is not established.");
+} else {
+  console.log("MongoDB connection is established.");
+}
+>>>>>>> f442347315104b0ee88fb503e76c964ab8dab525
