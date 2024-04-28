@@ -53,13 +53,6 @@ function ExTable() {
         <Td style={tableTextStyle} isNumeric>0.91444</Td>
       </Tr>
     </Tbody>
-    <Tfoot>
-      <Tr>
-        <Th style={tableTextStyle}>To convert</Th>
-        <Th style={tableTextStyle}>into</Th>
-        <Th style={tableTextStyle} isNumeric>multiply by</Th>
-      </Tr>
-    </Tfoot>
   </Table>
 </TableContainer>
     </Box>
