@@ -12,23 +12,18 @@
     "@testing-library/user-event": "^13.5.0",
     "aws-sdk": "^2.1608.0",
     "bootstrap": "^5.3.3",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "framer-motion": "^11.1.7",
     "mongodb": "^6.5.0",
     "multer": "^1.4.5-lts.1",
-=======
-=======
-    "cors": "^2.8.5",
->>>>>>> f442347315104b0ee88fb503e76c964ab8dab525
+
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "framer-motion": "^11.1.7",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.2",
->>>>>>> 2ba812f8f96aac5da8b4d53f323b8dfb31326bfd
+
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.0",
