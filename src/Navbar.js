@@ -20,8 +20,7 @@ const headerStyle = {
 
 const breadcrumbs = [
   { label: 'Home', path: '/' },
-  { label: 'Exercises', path: '/exercises' },
-  { label: 'Nutrition', path: '/nutrition' },
+  { label: 'Exercises', path: '/exercises' }
 ];
 
 

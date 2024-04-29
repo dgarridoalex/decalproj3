@@ -1,3 +1,4 @@
+
 require("dotenv").config(); 
 const express = require('express');
 const mongoose = require("mongoose");
@@ -6,8 +7,7 @@ const app = express();
 const cors = require('cors');
 
 app.use(cors({
-  origin: 'http://localhost:3001', // Specify allowed origin
-  credentials: true // Allow requests with credentials
+  origin: 'http://localhost:3001', 
 }));
 app.use(express.json());
 
@@ -31,11 +31,7 @@ app.listen(3000, () => console.log("Server is running"));
 
 
 const workoutSchema = new mongoose.Schema({
-  id: { type: String, required: true, unique: true },
-  exercise: { type: String, required: true },
-  sets: { type: Number, required: true },
-  weight: { type: Number, required: true },
-  reps: { type: Number, required: true },
+  exercise: String
 });
 
 const Workout = mongoose.model('Workout', workoutSchema);
@@ -115,3 +111,4 @@ if (mongoose.connection.readyState !== 1) {
 } else {
   console.log("MongoDB connection is established.");
 }
+
