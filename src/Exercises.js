@@ -167,6 +167,7 @@ const pageStyle = {
                       <Td>{workout.reps}</Td>
                       <Td>{workout.sets}</Td>
                       <Td>{workout.weight * workout.reps * workout.sets}</Td>
+                      <Td>{workout.date}</Td>
                       <Button onClick={() => handleDeleteExercise(workout)} colorScheme='red'>Delete</Button>
                     </Tr>
                   ))}
