@@ -129,8 +129,8 @@ const pageStyle = {
           <Box sx={pageStyle}>
             <h2>Your Exercises</h2> {/* Add a heading for clarity */}
             <Input value={newExercise} onChange={(e) => setNewExercise(e.target.value)} placeholder="Enter Exercise" />
-            <Input value={newWeight} onChange={(e) => setNewWeight(e.target.value)} placeholder="Enter sets" />
-            <Input value={newSets} onChange={(e) => setNewSets(e.target.value)} placeholder="Enter weight" />
+            <Input value={newWeight} onChange={(e) => setNewWeight(e.target.value)} placeholder="Enter weight" />
+            <Input value={newSets} onChange={(e) => setNewSets(e.target.value)} placeholder="Enter sets" />
             <Input value={newReps} onChange={(e) => setNewReps(e.target.value)} placeholder="Enter reps" />
             <Input value={newDate} onChange={(e) => setNewDate(e.target.value)} placeholder="Enter date" />
             <Button onClick={handleAddWorkout} disabled={isLoading || !newExercise || !newSets|| !newWeight|| !newReps|| !newDate}>
