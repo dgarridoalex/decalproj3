@@ -1,5 +1,5 @@
 import {React, useState, useEffect} from 'react';
-import { Input, Button, Table, Thead, Tbody, Tr, Th, Td, ChakraProvider, Box, Flex, Heading, Text} from '@chakra-ui/react';
+import { Input, Button, Table, Thead, Tbody, Tr, Th, Td, ChakraProvider, Box, Flex, Heading, Text, Card} from '@chakra-ui/react';
 import NavBar from './NavBar';
 import { v4 as uuidv4 } from 'uuid';
 import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
@@ -29,6 +29,7 @@ const pageStyle = {
   function Exercises() {
     const [workouts, setWorkouts] = useState([]); // Stores all workout sessions
     const [newExercise, setNewExercise] = useState(''); // Stores user input for new exercise
+    const [newDate, setNewDate] = useState('')
     const [newWeight, setNewWeight] = useState(0); // Weight lifted
     const [newReps, setNewReps] = useState(0); // Reps performed
     const [newSets, setNewSets] = useState(0);
@@ -64,6 +65,7 @@ const pageStyle = {
   
       const newWorkout = { 
       id: uuidv4(),
+      date: newDate,
       exercise: newExercise,
       sets: newSets,
       weight: newWeight,
@@ -89,6 +91,7 @@ const pageStyle = {
         setNewWeight(0);
         setNewReps(0);
         setNewSets(1);
+        setNewDate('');
       } catch (error) {
         console.error('Error adding exercise:', error);
         setError(error.message); // Set error message for display
@@ -130,7 +133,8 @@ const pageStyle = {
             <Input value={newSets} onChange={(e) => setNewSets(e.target.value)} placeholder="Enter sets" />
             <Input value={newWeight} onChange={(e) => setNewWeight(e.target.value)} placeholder="Enter weight" />
             <Input value={newReps} onChange={(e) => setNewReps(e.target.value)} placeholder="Enter reps" />
-            <Button onClick={handleAddWorkout} disabled={isLoading || !newExercise || !newSets|| !newWeight|| !newReps}>
+            <Input value={newDate} onChange={(e) => setNewDate(e.target.value)} placeholder="Enter date" />
+            <Button onClick={handleAddWorkout} disabled={isLoading || !newExercise || !newSets|| !newWeight|| !newReps|| !newDate}>
               {isLoading ? 'Adding...' : 'Add Exercise'}
             </Button>
   
@@ -147,11 +151,13 @@ const pageStyle = {
             ) : (
               <Table variant='simple'>
                 <Thead>
-                  <Tr>
+                  <Tr color='white'>
                     <Th>Exercise</Th>
                     <Th>Weight</Th>
                     <Th>Reps</Th>
                     <Th>Sets</Th>
+                    <Th>Total Volume</Th>
+                    <Th>Date</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -162,6 +168,7 @@ const pageStyle = {
                       <Td>{workout.weight}</Td>
                       <Td>{workout.reps}</Td>
                       <Td>{workout.sets}</Td>
+                      <Td>{workout.weight * workout.reps * workout.sets}</Td>
                       <Button onClick={() => handleDeleteExercise(workout)} colorScheme='red'>Delete</Button>
                     </Tr>
                     </Card>

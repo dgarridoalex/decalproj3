@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import Home from './Home.js'
 import Exercises from './Exercises.js';
-import Nutrition from './Nutrition.js'
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/exercises" element={<Exercises />} />
-      <Route path="/nutrition" element={<Nutrition />} />
     </Routes>
   </Router>
 </ChakraProvider>
