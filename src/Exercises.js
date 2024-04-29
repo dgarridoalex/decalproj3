@@ -1,6 +1,7 @@
 import {React, useState, useEffect} from 'react';
 import { Input, Button, Table, Thead, Tbody, Tr, Th, Td, ChakraProvider, Box, Flex, Heading, Text} from '@chakra-ui/react';
 import NavBar from './NavBar';
+import { v4 as uuidv4 } from 'uuid';
 
 const pageStyle = {
   color: '#EEEEEE',
@@ -60,7 +61,9 @@ const pageStyle = {
     const handleAddWorkout = async () => {
       if (!newExercise || !newWeight || !newReps) return;
   
-      const newWorkout = { exercise: newExercise,
+      const newWorkout = { 
+      id: uuidv4(),
+      exercise: newExercise,
       sets: newSets,
       weight: newWeight,
       reps: newReps
@@ -91,6 +94,25 @@ const pageStyle = {
         // Consider additional error handling logic here (e.g., rollback UI changes)
       } finally {
         setIsLoading(false); // Set loading state to false after operation
+      }
+    };
+    const handleDeleteExercise = async (workout) => {
+      if (!workout._id) {
+        console.error("Workout ID missing, cannot delete.");
+        return;
+      }
+    
+      try {
+        const response = await fetch(`http://localhost:3000/exercises/${workout._id}`, {
+          method: 'DELETE',
+        });
+        if (!response.ok) {
+          throw new Error(`Error deleting exercise: ${response.statusText}`);
+        }
+        // Remove workout from state directly (avoiding filter)
+        setWorkouts(prevWorkouts => prevWorkouts.filter(w => w._id !== workout._id));
+      } catch (error) {
+        console.error('Error deleting exercise:', error);
       }
     };
   
@@ -132,7 +154,7 @@ const pageStyle = {
                 </Thead>
                 <Tbody>
                   {workouts.map((workout) => (
-                    <Tr key={workout.exercise}>
+                    <Tr key={workout.id}>
                       <Td>{workout.exercise}</Td>
                       <Td>{workout.weight}</Td>
                       <Td>{workout.reps}</Td>
