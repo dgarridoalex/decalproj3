@@ -1,5 +1,5 @@
 import {React, useState, useEffect} from 'react';
-import { Input, Button, Table, Thead, Tbody, Tr, Th, Td, ChakraProvider, Box, Flex, Heading, Text} from '@chakra-ui/react';
+import { Input, Button, Table, Thead, Tbody, Tr, Th, Td, ChakraProvider, Box, Flex, Heading, Text, Card} from '@chakra-ui/react';
 import NavBar from './NavBar';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -151,6 +151,7 @@ const pageStyle = {
                     <Th>Weight</Th>
                     <Th>Reps</Th>
                     <Th>Sets</Th>
+                    <Th>Total Volume</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -160,6 +161,7 @@ const pageStyle = {
                       <Td>{workout.weight}</Td>
                       <Td>{workout.reps}</Td>
                       <Td>{workout.sets}</Td>
+                      <Td>{workout.weight * workout.reps * workout.sets}</Td>
                       <Button onClick={() => handleDeleteExercise(workout)} colorScheme='red'>Delete</Button>
                     </Tr>
                   ))}
