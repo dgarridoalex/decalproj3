@@ -150,7 +150,7 @@ const pageStyle = {
             ) : (
               <Table variant='simple'>
                 <Thead>
-                  <Tr color='white'>
+                  <Tr>
                     <Th>Exercise</Th>
                     <Th>Weight</Th>
                     <Th>Reps</Th>
@@ -161,7 +161,6 @@ const pageStyle = {
                 </Thead>
                 <Tbody>
                   {workouts.map((workout) => (
-                    <Card>
                     <Tr key={workout.id}>
                       <Td>{workout.exercise}</Td>
                       <Td>{workout.weight}</Td>
@@ -170,7 +169,6 @@ const pageStyle = {
                       <Td>{workout.weight * workout.reps * workout.sets}</Td>
                       <Button onClick={() => handleDeleteExercise(workout)} colorScheme='red'>Delete</Button>
                     </Tr>
-                    </Card>
                   ))}
                 </Tbody>
               </Table>
