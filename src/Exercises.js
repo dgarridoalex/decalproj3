@@ -1,6 +1,6 @@
 import {React, useState, useEffect} from 'react';
 import { Input, Button, Table, Thead, Tbody, Tr, Th, Td, ChakraProvider, Box, Flex, Heading, Text, Card} from '@chakra-ui/react';
-import NavBar from './NavBar';
+import NavBar from './Navbar';
 import { v4 as uuidv4 } from 'uuid';
 
 const pageStyle = {

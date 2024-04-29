@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from './NavBar.js'
+import NavBar from './Navbar.js'
 import { Heading, Text, Box, Center, Button, ButtonGroup, Flex} from '@chakra-ui/react'
 import { ChakraProvider} from '@chakra-ui/react'
 

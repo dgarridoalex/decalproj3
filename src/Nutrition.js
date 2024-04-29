@@ -1,6 +1,6 @@
 import React from "react";
 import {ChakraProvider, Box, Flex, Heading} from '@chakra-ui/react'
-import NavBar from "./NavBar";
+import NavBar from "./Navbar";
 
 const pageStyle = {
     color: '#4fd1af',

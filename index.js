@@ -32,6 +32,7 @@ app.listen(3000, () => console.log("Server is running"));
 
 const workoutSchema = new mongoose.Schema({
   id: { type: String, required: true, unique: true },
+  date: {type: String, required: true, unique: true},
   exercise: { type: String, required: true },
   sets: { type: Number, required: true },
   weight: { type: Number, required: true },
