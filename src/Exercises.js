@@ -97,7 +97,7 @@ const pageStyle = {
       }
     };
     const handleDeleteExercise = async (workout) => {
-      if (!workout._id) {
+      if (!workout.id) {
         console.error("Workout ID missing, cannot delete.");
         return;
       }
@@ -132,6 +132,7 @@ const pageStyle = {
             <Button onClick={handleAddWorkout} disabled={isLoading || !newExercise || !newSets|| !newWeight|| !newReps}>
               {isLoading ? 'Adding...' : 'Add Exercise'}
             </Button>
+  
             <br /> {/* Add some space between input and table */}
   
             {error && (
@@ -143,7 +144,7 @@ const pageStyle = {
             {isLoading ? (
               <Text>Loading workouts...</Text>
             ) : (
-              <Table>
+              <Table variant='simple'>
                 <Thead>
                   <Tr>
                     <Th>Exercise</Th>
@@ -159,6 +160,7 @@ const pageStyle = {
                       <Td>{workout.weight}</Td>
                       <Td>{workout.reps}</Td>
                       <Td>{workout.sets}</Td>
+                      <Button onClick={() => handleDeleteExercise(workout)} colorScheme='red'>Delete</Button>
                     </Tr>
                   ))}
                 </Tbody>
