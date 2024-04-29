@@ -87,8 +87,8 @@ const pageStyle = {
         console.log('Exercise added successfully:', data); // Log success message for debugging
         setWorkouts([...workouts, newWorkout]); // Add the new workout to the workouts state
         setNewExercise(''); // Clear input field
-        setNewWeight(0);
-        setNewReps(0);
+        setNewWeight(1);
+        setNewReps(1);
         setNewSets(1);
         setNewDate('');
       } catch (error) {
@@ -129,8 +129,8 @@ const pageStyle = {
           <Box sx={pageStyle}>
             <h2>Your Exercises</h2> {/* Add a heading for clarity */}
             <Input value={newExercise} onChange={(e) => setNewExercise(e.target.value)} placeholder="Enter Exercise" />
-            <Input value={newSets} onChange={(e) => setNewSets(e.target.value)} placeholder="Enter sets" />
-            <Input value={newWeight} onChange={(e) => setNewWeight(e.target.value)} placeholder="Enter weight" />
+            <Input value={newWeight} onChange={(e) => setNewWeight(e.target.value)} placeholder="Enter sets" />
+            <Input value={newSets} onChange={(e) => setNewSets(e.target.value)} placeholder="Enter weight" />
             <Input value={newReps} onChange={(e) => setNewReps(e.target.value)} placeholder="Enter reps" />
             <Input value={newDate} onChange={(e) => setNewDate(e.target.value)} placeholder="Enter date" />
             <Button onClick={handleAddWorkout} disabled={isLoading || !newExercise || !newSets|| !newWeight|| !newReps|| !newDate}>
