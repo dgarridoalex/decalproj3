@@ -1,6 +1,7 @@
 import {React, useState, useEffect} from 'react';
 import { Input, Button, Table, Thead, Tbody, Tr, Th, Td, ChakraProvider, Box, Flex, Heading, Text} from '@chakra-ui/react';
 import NavBar from './NavBar';
+import { v4 as uuidv4 } from 'uuid';
 
 const pageStyle = {
   color: '#EEEEEE',
@@ -27,6 +28,9 @@ const pageStyle = {
   function Exercises() {
     const [workouts, setWorkouts] = useState([]); // Stores all workout sessions
     const [newExercise, setNewExercise] = useState(''); // Stores user input for new exercise
+    const [newWeight, setNewWeight] = useState(0); // Weight lifted
+    const [newReps, setNewReps] = useState(0); // Reps performed
+    const [newSets, setNewSets] = useState(0);
     const [isLoading, setIsLoading] = useState(false); // Track loading state for user feedback
     const [error, setError] = useState(null); // Store any errors during data fetching or submission
   
@@ -54,10 +58,16 @@ const pageStyle = {
     }, []); // Empty dependency array ensures fetching only once on mount
   
     // Function to handle new exercise submission
-    const handleAddExercise = async () => {
-      if (!newExercise) return; // Prevent empty submissions
+    const handleAddWorkout = async () => {
+      if (!newExercise || !newWeight || !newReps) return;
   
-      const newWorkout = { exercise: newExercise }; // Create new workout object
+      const newWorkout = { 
+      id: uuidv4(),
+      exercise: newExercise,
+      sets: newSets,
+      weight: newWeight,
+      reps: newReps
+      }; // Create new workout object
       setIsLoading(true); // Set loading state to true
       setError(null); // Clear any previous errors
   
@@ -75,12 +85,34 @@ const pageStyle = {
         console.log('Exercise added successfully:', data); // Log success message for debugging
         setWorkouts([...workouts, newWorkout]); // Add the new workout to the workouts state
         setNewExercise(''); // Clear input field
+        setNewWeight(0);
+        setNewReps(0);
+        setNewSets(1);
       } catch (error) {
         console.error('Error adding exercise:', error);
         setError(error.message); // Set error message for display
         // Consider additional error handling logic here (e.g., rollback UI changes)
       } finally {
         setIsLoading(false); // Set loading state to false after operation
+      }
+    };
+    const handleDeleteExercise = async (workout) => {
+      if (!workout.id) {
+        console.error("Workout ID missing, cannot delete.");
+        return;
+      }
+    
+      try {
+        const response = await fetch(`http://localhost:3000/exercises/${workout._id}`, {
+          method: 'DELETE',
+        });
+        if (!response.ok) {
+          throw new Error(`Error deleting exercise: ${response.statusText}`);
+        }
+        // Remove workout from state directly (avoiding filter)
+        setWorkouts(prevWorkouts => prevWorkouts.filter(w => w._id !== workout._id));
+      } catch (error) {
+        console.error('Error deleting exercise:', error);
       }
     };
   
@@ -94,9 +126,13 @@ const pageStyle = {
           <Box sx={pageStyle}>
             <h2>Your Exercises</h2> {/* Add a heading for clarity */}
             <Input value={newExercise} onChange={(e) => setNewExercise(e.target.value)} placeholder="Enter Exercise" />
-            <Button onClick={handleAddExercise} disabled={isLoading}>
+            <Input value={newSets} onChange={(e) => setNewSets(e.target.value)} placeholder="Enter sets" />
+            <Input value={newWeight} onChange={(e) => setNewWeight(e.target.value)} placeholder="Enter weight" />
+            <Input value={newReps} onChange={(e) => setNewReps(e.target.value)} placeholder="Enter reps" />
+            <Button onClick={handleAddWorkout} disabled={isLoading || !newExercise || !newSets|| !newWeight|| !newReps}>
               {isLoading ? 'Adding...' : 'Add Exercise'}
             </Button>
+  
             <br /> {/* Add some space between input and table */}
   
             {error && (
@@ -108,16 +144,23 @@ const pageStyle = {
             {isLoading ? (
               <Text>Loading workouts...</Text>
             ) : (
-              <Table>
+              <Table variant='simple'>
                 <Thead>
                   <Tr>
                     <Th>Exercise</Th>
+                    <Th>Weight</Th>
+                    <Th>Reps</Th>
+                    <Th>Sets</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
                   {workouts.map((workout) => (
-                    <Tr key={workout.exercise}>
+                    <Tr key={workout.id}>
                       <Td>{workout.exercise}</Td>
+                      <Td>{workout.weight}</Td>
+                      <Td>{workout.reps}</Td>
+                      <Td>{workout.sets}</Td>
+                      <Button onClick={() => handleDeleteExercise(workout)} colorScheme='red'>Delete</Button>
                     </Tr>
                   ))}
                 </Tbody>

@@ -1,8 +1,6 @@
 import React from "react";
-import "./index.css"
 import NavBar from './NavBar.js'
 import { Heading, Text, Box, Center, Button, ButtonGroup, Flex} from '@chakra-ui/react'
-import {ChevronRightIcon} from '@chakra-ui/icons'
 import { ChakraProvider} from '@chakra-ui/react'
 
 const pageStyle = {
