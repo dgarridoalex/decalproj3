@@ -1,7 +1,6 @@
 import React from "react";
 import {ChakraProvider, Box, Flex, Heading} from '@chakra-ui/react'
 import NavBar from "./NavBar";
-import {ChevronRightIcon} from '@chakra-ui/icons'
 
 const pageStyle = {
     color: '#4fd1af',
